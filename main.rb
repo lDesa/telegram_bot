@@ -1,4 +1,4 @@
-require_relative "lib/weather_bot"
+ require_relative "lib/weather_bot"
 
 
-Weather_bot.run_bot
+WeatherBot.run_bot
