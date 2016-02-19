@@ -1,9 +1,9 @@
 require 'telegram/bot'
 require 'net/http'
 require 'json'
-require 'map'
 
-require_relative "weather"
+
+require_relative "weather_condition"
 
 
 module WeatherBot
@@ -24,13 +24,13 @@ module WeatherBot
           when '/weather'
             city_and_country = parse_message(message.text)
 
-            if  city_and_country.nil?
+            if  city_and_country[:city].nil?
               weather_today = "Некорректный ввод,проверте команду"
             else
-              response_today = Weather.new(city_and_country).get_response_today
+              weather_today = WeatherCondition.new(city_and_country).get_weather_today
             end
             bot.api.sendMessage(chat_id: message.chat.id,
-                                   text: "#{message.from.first_name}"+"\n"+"#{response_today}")
+                                   text: "#{message.from.first_name}"+"\n"+"#{weather_today}")
           when '/help'
             bot.api.sendMessage(chat_id: message.chat.id,
                                    text: "Чтобы узнать погоду на сегодня\n"+

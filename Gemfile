@@ -1,4 +1,4 @@
 source "https://rubygems.org"
 
   gem 'telegram-bot-ruby'
-  gem 'map'
+  gem 'weather-api'
