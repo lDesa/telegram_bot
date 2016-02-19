@@ -25,7 +25,7 @@ module WeatherBot
             city_and_country = parse_message(message.text)
 
             if  city_and_country[:city].nil?
-              weather_today = "Некорректный ввод,проверте команду"
+              weather_today = "Некорректный ввод,проверьте команду"
             else
               weather_today = WeatherCondition.new(city_and_country).get_weather_today
             end
@@ -36,6 +36,9 @@ module WeatherBot
                                    text: "Чтобы узнать погоду на сегодня\n"+
                                    "Введите команду в формате:\n"+
                                    "/weather city,country")
+          else
+            bot.api.sendMessage(chat_id: message.chat.id,
+                                   text: "Некорректный ввод")
           end
         end
       end
@@ -44,7 +47,7 @@ module WeatherBot
     private
 
 
-    def parse_message message
+    def parse_message(message)
 
       first_word = message.split(" ")[0]
 
