@@ -10,9 +10,8 @@ module WeatherBot
 
   class << self
 
-    def run_bot
-
-      token = '189479251:AAENfpcRvHfqnfqb0OVKu1Bv3poNg8Vr_sQ'
+    def run(token)
+      
       Telegram::Bot::Client.run(token) do |bot|
 
         bot.listen do |message|

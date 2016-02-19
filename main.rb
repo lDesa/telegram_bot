@@ -1,4 +1,8 @@
 require_relative "lib/weather_bot"
+require 'yaml'
 
+cnf = YAML::load(File.open('config.yml'),'r')
 
-WeatherBot.run_bot
+unless cnf['token'].empty?
+  WeatherBot.run(cnf['token'])
+end
