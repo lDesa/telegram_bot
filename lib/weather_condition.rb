@@ -31,9 +31,10 @@ module WeatherBot
 
       def get_woeid_for_city(city = '')
 
-        url =  "http://where.yahooapis.com/v1/places."
-        url += "q(#{city})?appid=4b2eada546c1546f5bdc3b8a5afecbc0f00eb294"
-        url += "&format=json"
+        url =
+          "http://where.yahooapis.com/v1/places."\
+          "q(#{city})?appid=4b2eada546c1546f5bdc3b8a5afecbc0f00eb294"\
+          "&format=json"
 
         begin
           response_uri = Net::HTTP.get(URI(url)).to_s

@@ -2,7 +2,6 @@ require 'telegram/bot'
 require 'net/http'
 require 'json'
 
-
 require_relative "weather_condition"
 
 
@@ -11,7 +10,7 @@ module WeatherBot
   class << self
 
     def run(token)
-      
+
       Telegram::Bot::Client.run(token) do |bot|
 
         bot.listen do |message|
